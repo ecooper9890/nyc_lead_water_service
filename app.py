@@ -25,6 +25,8 @@ df = pd.read_csv(url, error_bad_lines=False)
 boros = ["Manhattan", "Bronx", "Brooklyn", "Queens", "Staten Island"]
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 server = app.server
+app.title='NYC Lead Water Service Lines'
+
 app.layout = html.Div(children=[
     html.H1(children='New York City Lead Service Line Locator'),
 
