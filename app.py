@@ -14,7 +14,7 @@ external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 url = 'https://raw.githubusercontent.com/ecooper9890/my_insight_app/master/APP_DATA.csv'
 
 df = pd.read_csv(url, error_bad_lines=False)
-ny_map = folium.Map(location=[40.1728, -74.0060], zoom_start=5)
+ny_map = folium.Map(location=[40.1728, -74.0060])
 ny_map.save('base_map.html')
 
 boros = ["Manhattan", "Bronx", "Brooklyn", "Queens", "Staten Island"]
@@ -32,8 +32,8 @@ app.layout = html.Div(children=[
     html.Label(["Select Borough:", dcc.RadioItems(id="boro",options=[{'label': i, 'value': i} for i in boros],labelStyle={'display': 'inline-block'})]),
     html.Label(["Select Zip Code:",dcc.Dropdown(id="zip")]),
     html.Label(["Select Your Street Address:",dcc.Dropdown(id="staddr")]),
-    html.Div(id='prediction'),
-    html.Iframe(id='map', figure=ny_map, srcDoc=open('base_map.html','r').read(),width='100%',height='600')
+    html.Div(id='prediction')
+    #html.Iframe(id='map', figure=ny_map, srcDoc=open('base_map.html','r').read())
 ])
 
 
