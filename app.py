@@ -8,7 +8,7 @@ import plotly.graph_objs as go
 from shapely import wkt
 from shapely.geometry import Polygon, Point
 import geopandas as gpd
-
+import geoplot
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 url = 'https://raw.githubusercontent.com/ecooper9890/my_insight_app/master/APP_DATA.csv'
