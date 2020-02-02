@@ -14,7 +14,7 @@ external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 url = 'https://raw.githubusercontent.com/ecooper9890/my_insight_app/master/APP_DATA.csv'
 
 df = pd.read_csv(url, error_bad_lines=False)
-ny_map = folum.Map(location=[40.1728, -74.0060])
+ny_map = folium.Map(location=[40.1728, -74.0060])
 ny_map.save('base_map.html')
 
 boros = ["Manhattan", "Bronx", "Brooklyn", "Queens", "Staten Island"]
