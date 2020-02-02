@@ -4,8 +4,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
-import matplotlib.mlab as mlab
+import plotly.graph_objs as go
 from shapely import wkt
 from shapely.geometry import Polygon, Point
 import geopandas as gpd
