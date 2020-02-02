@@ -4,11 +4,11 @@ import dash_core_components as dcc
 import dash_html_components as html
 import pandas as pd
 import numpy as np
-#import matplotlib.pyplot as plt
-#import matplotlib.mlab as mlab
-#from shapely import wkt
-#from shapely.geometry import Polygon, Point
-#import geopandas as gpd
+import matplotlib.pyplot as plt
+import matplotlib.mlab as mlab
+from shapely import wkt
+from shapely.geometry import Polygon, Point
+import geopandas as gpd
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
