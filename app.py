@@ -5,10 +5,9 @@ import dash_html_components as html
 import pandas as pd
 import numpy as np
 import plotly.graph_objs as go
-from shapely import wkt
-from shapely.geometry import Polygon, Point
+#from shapely import wkt
+#from shapely.geometry import Polygon, Point
 import geopandas as gpd
-import geoplot
 import folium
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
