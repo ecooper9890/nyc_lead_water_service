@@ -29,4 +29,5 @@ Werkzeug==0.15.4
 pyshp
 shapely
 geopandas
+folium
 json
