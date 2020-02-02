@@ -14,10 +14,7 @@ external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 url = 'https://raw.githubusercontent.com/ecooper9890/my_insight_app/master/APP_DATA.csv'
 
 df = pd.read_csv(url, error_bad_lines=False)
-#df_service = df
-#NYS_counties = gpd.read_file("NYshapefile/cugir-007865/cty036.shp")
-#NYC_county_shapes = NYS_counties.loc[(NYS_counties['NAME']=='Kings')|(NYS_counties['NAME']=='Queens')|(NYS_counties['NAME']=='New York')|(NYS_counties['NAME']=='Bronx')|(NYS_counties['NAME']=='Richmond')]
-#NYC_county_shapes = NYC_county_shapes.drop([62,65])
+NYC_county = gpd.read_file('NYC.shp')
 
 
 
