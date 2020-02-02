@@ -14,7 +14,7 @@ external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 url = 'https://raw.githubusercontent.com/ecooper9890/my_insight_app/master/APP_DATA.csv'
 
 df = pd.read_csv(url, error_bad_lines=False)
-ny_map = folium.Map(location=[40.682, -73.945],tiles='Stamen Toner' ,zoom_start=12)
+ny_map = folium.Map(location=[40.682, -73.945],tiles='Stamen Toner' ,zoom_start=5)
 
 boros = ["Manhattan", "Bronx", "Brooklyn", "Queens", "Staten Island"]
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
@@ -32,7 +32,7 @@ app.layout = html.Div(children=[
     html.Label(["Select Zip Code:",dcc.Dropdown(id="zip")]),
     html.Label(["Select Your Street Address:",dcc.Dropdown(id="staddr")]),
     html.Div(id='prediction'),
-    html.Iframe(id='map', srcDoc=ny_map._repr_html_())
+    html.Iframe(id='map', srcDoc=ny_map._repr_html_(), width='100%',height='600')
 ])
 
 
