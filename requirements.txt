@@ -30,4 +30,3 @@ pyshp
 shapely
 geopandas
 folium
-json
