@@ -15,7 +15,7 @@ url = 'https://raw.githubusercontent.com/ecooper9890/my_insight_app/master/APP_D
 
 df = pd.read_csv(url, error_bad_lines=False)
 NYC_county = gpd.read_file('NYC.shp')
-
+map = geoplot.polyplot(NYC_county, figsize=(4, 4))
 
 
 boros = ["Manhattan", "Bronx", "Brooklyn", "Queens", "Staten Island"]
@@ -33,7 +33,11 @@ app.layout = html.Div(children=[
     html.Label(["Select Borough:", dcc.RadioItems(id="boro",options=[{'label': i, 'value': i} for i in boros],labelStyle={'display': 'inline-block'})]),
     html.Label(["Select Zip Code:",dcc.Dropdown(id="zip")]),
     html.Label(["Select Your Street Address:",dcc.Dropdown(id="staddr")]),
-    html.Div(id='prediction')
+    html.Div(id='prediction'),
+     htm.Div(id='map', dcc.Graph(
+        id='flyingdog',
+        figure=beer_fig
+    )
 ])
 
 
