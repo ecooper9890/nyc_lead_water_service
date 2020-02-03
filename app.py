@@ -93,7 +93,7 @@ def update_output_div(input_value1,input_value2):
     [dash.dependencies.Input(component_id='staddr', component_property='value'),dash.dependencies.Input(component_id='service', component_property='value')]
 )
 def update_output_div(input_value1,input_value2):
-    if isinstance(input_value1, type(None)): return [ny_map._repr_html_()]
+    if isinstance(input_value1, type(None)): return [folium.Map(location=[40.682, -73.945],tiles='Stamen Toner' ,zoom_start=10)._repr_html_()]
     new_map = folium.Map(location=[40.682, -73.945],tiles='Stamen Toner' ,zoom_start=10)
     lat = df[df['Address']==input_value1].iloc[0]['latitude']
     lon = df[df['Address']==input_value1].iloc[0]['longitude']
