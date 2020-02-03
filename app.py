@@ -31,7 +31,7 @@ app.layout = html.Div(children=[
     html.Label(["Select Borough:", dcc.RadioItems(id="boro",options=[{'label': i, 'value': i} for i in boros],labelStyle={'display': 'inline-block'})]),
     html.Label(["Select Zip Code:",dcc.Dropdown(id="zip")]),
     html.Label(["Select Your Street Address:",dcc.Dropdown(id="staddr")]),
-    html.Div(id='prediction')
+    html.Div(id='prediction'),
     html.Iframe(id='map', srcDoc=ny_map._repr_html_(), width='40%',height='500')
 ])
 
