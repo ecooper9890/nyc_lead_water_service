@@ -80,17 +80,18 @@ def update_output_div(input_value1,input_value2):
     #if p==0: return ['This address is predicted to have: NOT LEAD']
     #if p==1: return ['This address is predicted to have: LEAD']    
 
-#@app.callback(
-#    dash.dependencies.Output(component_id='map', component_property='src_Doc'),
-#    [dash.dependencies.Input(component_id='staddr', component_property='value'),dash.dependencies.Input(component_id='service', component_property='value')]
-#)
-#def update_output_div(input_value1,input_value2):
-#    if isinstance(input_value1, type(None)): return [ny_map._repr_html_()]
-#    new_map = ny_map
-#    p = (40.682, -73.945)
-#    marker = folium.Marker(location=[40.682, -73.945])
-#    marker.add_to(new_map)
-#    return [new_map._repr_html_()]
+@app.callback(
+    dash.dependencies.Output(component_id='map', component_property='src_Doc'),
+    [dash.dependencies.Input(component_id='staddr', component_property='value'),dash.dependencies.Input(component_id='service', component_property='value')]
+)
+def update_output_div(input_value1,input_value2):
+    if isinstance(input_value1, type(None)): return [ny_map._repr_html_()]
+    return [ny_map._repr_html_()]
+    #new_map = ny_map
+    #p = (40.682, -73.945)
+    #marker = folium.Marker(location=[40.682, -73.945])
+    #marker.add_to(new_map)
+    #return [new_map._repr_html_()]
 
 if __name__ == '__main__':
     app.run_server(debug=True)
