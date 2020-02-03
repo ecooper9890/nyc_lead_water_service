@@ -86,12 +86,11 @@ def update_output_div(input_value1,input_value2):
 )
 def update_output_div(input_value1,input_value2):
     if isinstance(input_value1, type(None)): return [ny_map._repr_html_()]
-    return [ny_map._repr_html_()]
-    #new_map = ny_map
-    #p = (40.682, -73.945)
-    #marker = folium.Marker(location=[40.682, -73.945])
-    #marker.add_to(new_map)
-    #return [new_map._repr_html_()]
+    new_map = ny_map
+    p = (40.682, -73.945)
+    marker = folium.Marker(location=[40.682, -73.945])
+    marker.add_to(new_map)
+    return [new_map._repr_html_()]
 
 if __name__ == '__main__':
     app.run_server(debug=True)
