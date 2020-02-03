@@ -40,7 +40,7 @@ app.layout = html.Div(children=[
     html.Label(["Select Zip Code:",dcc.Dropdown(id="zip")]),
     html.Label(["Select Your Street Address:",dcc.Dropdown(id="staddr")]),
     html.Div(id='prediction'),
-    html.Iframe(id='map', srcDoc=ny_map._repr_html_(), width='50%',height='700')
+    html.Iframe(id='map', srcDoc=ny_map._repr_html_(), width='50%',height='200')
 ])
 
 
