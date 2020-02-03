@@ -32,7 +32,7 @@ app.layout = html.Div(children=[
     html.Label(["Select Zip Code:",dcc.Dropdown(id="zip")]),
     html.Label(["Select Your Street Address:",dcc.Dropdown(id="staddr")]),
     html.Div(id='prediction'),
-    html.Iframe(id='map', srcDoc=ny_map._repr_html_(), width='40%',height='500')
+    html.Iframe(id='map', srcDoc=ny_map._repr_html_(), width='50%',height='500')
 ])
 
 
@@ -87,8 +87,9 @@ def update_output_div(input_value1,input_value2):
 def update_output_div(input_value1,input_value2):
     if isinstance(input_value1, type(None)): return [ny_map._repr_html_()]
     new_map = ny_map
-    p = (40.682, -73.945)
-    marker = folium.Marker(location=[40.682, -73.945])
+    lat = app[app['Address']==input_value1].iloc[0]['latitude']
+    lon = app[app['Address']==input_value1].iloc[0]['longitude']
+    marker = folium.Marker(location=[lat, lon])
     marker.add_to(new_map)
     return [new_map._repr_html_()]
 
