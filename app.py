@@ -72,7 +72,7 @@ def update_output_div(input_value1,input_value2):
     if isinstance(input_value1, type(None)): return ['']
     if (input_value2 == 'No Lead'): a=0
     else: a=1
-    if (input_value2 == 'Non Lead'): df_service = df[df['Prediction']==0]
+    if (input_value2 == 'No Lead'): df_service = df[df['Prediction']==0]
     else: df_service = df[df['Prediction']==1]
     if (input_value1 not in list(df[df['Prediction']==a].Address)): return[' ']
     return ['This address is predicted to have service line of type: ' + input_value2]	
@@ -89,7 +89,8 @@ def update_output_div(input_value1,input_value2):
     new_map = ny_map
     lat = df[df['Address']==input_value1].iloc[0]['latitude']
     lon = df[df['Address']==input_value1].iloc[0]['longitude']
-    marker = folium.Marker(location=[40.682, -73.945])
+    if (input_value2 == 'Lead'): marker = folium.Marker(location=[lat, lon],icon=folium.Icon(color='red'))
+    else: marker = folium.Marker(location=[lat, lon],icon=folium.Icon(color='blue'))
     marker.add_to(new_map)
     return [new_map._repr_html_()]
 
