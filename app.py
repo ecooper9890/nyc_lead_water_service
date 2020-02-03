@@ -97,7 +97,7 @@ def update_output_div(input_value1,input_value2):
     new_map = ny_map
     lat = df[df['Address']==input_value1].iloc[0]['latitude']
     lon = df[df['Address']==input_value1].iloc[0]['longitude']
-    if (input_value2 == 'Lead'): marker = folium.Marker(location=[lat, lon],icon=folium.Icon(color='red'))
+    if (df[df['Address']==input_value1].iloc[0]['Prediction'] == 1): marker = folium.Marker(location=[lat, lon],icon=folium.Icon(color='red'))
     else: marker = folium.Marker(location=[lat, lon],icon=folium.Icon(color='blue'))
     marker.add_to(new_map)
     return [new_map._repr_html_()]
