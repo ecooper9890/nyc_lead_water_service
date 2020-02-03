@@ -94,7 +94,7 @@ def update_output_div(input_value1,input_value2):
 )
 def update_output_div(input_value1,input_value2):
     if isinstance(input_value1, type(None)): return [ny_map._repr_html_()]
-    new_map = ny_map
+    new_map = folium.Map(location=[40.682, -73.945],tiles='Stamen Toner' ,zoom_start=10)
     lat = df[df['Address']==input_value1].iloc[0]['latitude']
     lon = df[df['Address']==input_value1].iloc[0]['longitude']
     if (df[df['Address']==input_value1].iloc[0]['Prediction'] == 1): marker = folium.Marker(location=[lat, lon],icon=folium.Icon(color='red'))
