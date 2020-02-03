@@ -81,7 +81,7 @@ def update_output_div(input_value1,input_value2):
     #if p==1: return ['This address is predicted to have: LEAD']    
 
 @app.callback(
-    dash.dependencies.Output(component_id='map', component_property='src_Doc'),
+    dash.dependencies.Output(component_id='map', component_property='srcDoc'),
     [dash.dependencies.Input(component_id='staddr', component_property='value'),dash.dependencies.Input(component_id='service', component_property='value')]
 )
 def update_output_div(input_value1,input_value2):
