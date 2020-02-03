@@ -14,10 +14,10 @@ external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 url = 'https://raw.githubusercontent.com/ecooper9890/my_insight_app/master/APP_DATA.csv'
 
 #df = pd.read_csv(url, error_bad_lines=False)
-t1 = pd.read_csv('https://raw.githubusercontent.com/ecooper9890/my_insight_app/master/APP_DATA_address.csv')
-t2 = pd.read_csv('https://raw.githubusercontent.com/ecooper9890/my_insight_app/master/APP_DATA_yr.csv')
-t3 = pd.read_csv('https://raw.githubusercontent.com/ecooper9890/my_insight_app/master/APP_DATA_lat.csv')
-t4 = pd.read_csv('https://raw.githubusercontent.com/ecooper9890/my_insight_app/master/APP_DATA_lon.csv')
+t1 = pd.read_csv('https://raw.githubusercontent.com/ecooper9890/my_insight_app/master/APP_DATA_address.csv',error_bad_lines=False)
+t2 = pd.read_csv('https://raw.githubusercontent.com/ecooper9890/my_insight_app/master/APP_DATA_yr.csv',error_bad_lines=False)
+t3 = pd.read_csv('https://raw.githubusercontent.com/ecooper9890/my_insight_app/master/APP_DATA_lat.csv',error_bad_lines=False)
+t4 = pd.read_csv('https://raw.githubusercontent.com/ecooper9890/my_insight_app/master/APP_DATA_lon.csv',error_bad_lines=False)
 df = t1.merge(t2)
 df = df.merge(t3)
 df = df.merge(t4)
