@@ -89,7 +89,7 @@ def update_output_div(input_value1,input_value2):
     new_map = ny_map
     lat = app[app['Address']==input_value1].iloc[0]['latitude']
     lon = app[app['Address']==input_value1].iloc[0]['longitude']
-    marker = folium.Marker(location=[lat, lon])
+    marker = folium.Marker(location=[40.682, -73.945])
     marker.add_to(new_map)
     return [new_map._repr_html_()]
 
