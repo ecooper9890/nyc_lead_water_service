@@ -32,11 +32,11 @@ server = app.server
 app.title='NYC Lead Water Service Lines'
 
 
-app.layout = dash_table.DataTable(
+app.layout = html.Div([ dash_table.DataTable(
     id='table',
     columns=[{"name": i, "id": i} for i in df.columns],
-    data=df.head().to_dict('records')
-)
+    data=df.head().to_dict('records'),)
+])
 #app.layout = html.Div(children=[
 #    html.H1(children='New York City Lead Service Line Locator'),
 
