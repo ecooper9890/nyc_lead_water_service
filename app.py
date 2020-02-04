@@ -1,5 +1,6 @@
 # -*- coding: utf-8 
 import dash
+import dash_table
 import dash_core_components as dcc
 import dash_html_components as html
 import pandas as pd
@@ -45,8 +46,8 @@ app.layout = html.Div(children=[
     #columns=[{"name": i, "id": i} for i in df.columns],
     #data=df.to_dict('records'),style={'width': '49%', 'display': 'inline-block'}
     #),
-    html.Div(id='prediction',style={'width': '49%', 'display': 'inline-block'})
-    #html.Div([dash_table.DataTable(id='tweet_table', rows=[{}])])
+    html.Div(id='prediction',style={'width': '49%', 'display': 'inline-block'}),
+    html.Div([dash_table.DataTable(id='tweet_table', rows=[{}])])
     
 ])
 
