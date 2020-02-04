@@ -1,6 +1,6 @@
 # -*- coding: utf-8 
 import dash
-import dash_table
+import dash-table as dt
 import dash_core_components as dcc
 import dash_html_components as html
 import pandas as pd
@@ -42,7 +42,7 @@ app.layout = html.Div(children=[
     html.Label(["Select Your Street Address:",dcc.Dropdown(id="staddr")]),
     html.Iframe(id='map', srcDoc=ny_map._repr_html_(), width='50%',height='400',style={'width': '49%', 'display': 'inline-block'}),
     html.Div(id='prediction',style={'width': '49%', 'display': 'inline-block'}),
-    #dash_table.DataTable(id='table',columns=[{"name": i, "id": i} for i in df.columns],data=df.head().to_dict('records'),style={'width': '49%', 'display': 'inline-block'}),
+    dt.DataTable(id='table',columns=[{"name": i, "id": i} for i in df.columns],data=df.head().to_dict('records'),style={'width': '49%', 'display': 'inline-block'})
     #html.Div([dash_table.DataTable(id='tweet_table', rows=[{}])])    
 ])
 
