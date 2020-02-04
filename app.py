@@ -22,6 +22,7 @@ t4 = pd.read_csv('https://raw.githubusercontent.com/eric-r-cooper/nyc_lead_water
 df = t1.merge(t2)
 df = df.merge(t3)
 df = df.merge(t4)
+df.drop(columns=['Unnamed: 0'],inplace=True)
 
 ny_map = folium.Map(location=[40.682, -73.945],tiles='Stamen Toner' ,zoom_start=10)
 
@@ -44,11 +45,9 @@ app.layout = html.Div(children=[
     dash_table.DataTable(
     id='table',
     columns=[{"name": i, "id": i} for i in df.columns],
-    data={},style={'width': '49%', 'display': 'inline-block'}
-    ),
+    data=df.head().to_dict('records'),style={'width': '49%', 'display': 'inline-block'}),
     html.Div(id='prediction',style={'width': '49%', 'display': 'inline-block'})
-    #html.Div([dash_table.DataTable(id='tweet_table', rows=[{}])])
-    
+    #html.Div([dash_table.DataTable(id='tweet_table', rows=[{}])])    
 ])
 
 
