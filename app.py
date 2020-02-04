@@ -46,7 +46,7 @@ app.layout = html.Div(children=[
     #data=df.to_dict('records'),style={'width': '49%', 'display': 'inline-block'}
     #),
     html.Div(id='prediction',style={'width': '49%', 'display': 'inline-block'}),
-    html.Div(dash_table.DataTable(id='tweet_table', rows=[{}]))
+    html.Div([dash_table.DataTable(id='tweet_table', rows=[{}])])
     
 ])
 
