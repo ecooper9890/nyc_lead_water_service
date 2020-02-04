@@ -31,24 +31,30 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 server = app.server
 app.title='NYC Lead Water Service Lines'
 
-app.layout = html.Div(children=[
-    html.H1(children='New York City Lead Service Line Locator'),
 
-    html.Div(children='''
-        
-    '''),
-    html.Label(["Select Service Line Material:", dcc.RadioItems(id="service",options=[{'label': 'Lead Service Line', 'value': 'Lead'},{'label': 'Non-Lead Service Line', 'value': 'No Lead'}], labelStyle={'display': 'inline-block'})]),	
-    html.Label(["Select Borough:", dcc.RadioItems(id="boro",options=[{'label': i, 'value': i} for i in boros],labelStyle={'display': 'inline-block'})]),
-    html.Label(["Select Zip Code:",dcc.Dropdown(id="zip")]),
-    html.Label(["Select Your Street Address:",dcc.Dropdown(id="staddr")]),
-    html.Iframe(id='map', srcDoc=ny_map._repr_html_(), width='50%',height='400',style={'width': '49%', 'display': 'inline-block'}),
-    dash_table.DataTable(
+app.layout = dash_table.DataTable(
     id='table',
     columns=[{"name": i, "id": i} for i in df.columns],
-    data=df.head().to_dict('records'),style={'width': '49%', 'display': 'inline-block'}),
-    html.Div(id='prediction',style={'width': '49%', 'display': 'inline-block'})
-    #html.Div([dash_table.DataTable(id='tweet_table', rows=[{}])])    
-])
+    data=df.head().to_dict('records'),
+)
+#app.layout = html.Div(children=[
+#    html.H1(children='New York City Lead Service Line Locator'),
+
+#    html.Div(children='''
+        
+#    '''),
+#    html.Label(["Select Service Line Material:", dcc.RadioItems(id="service",options=[{'label': 'Lead Service Line', 'value': 'Lead'},{'label': 'Non-Lead Service Line', 'value': 'No Lead'}], labelStyle={'display': 'inline-block'})]),	
+#    html.Label(["Select Borough:", dcc.RadioItems(id="boro",options=[{'label': i, 'value': i} for i in boros],labelStyle={'display': 'inline-block'})]),
+#    html.Label(["Select Zip Code:",dcc.Dropdown(id="zip")]),
+#    html.Label(["Select Your Street Address:",dcc.Dropdown(id="staddr")]),
+#    html.Iframe(id='map', srcDoc=ny_map._repr_html_(), width='50%',height='400',style={'width': '49%', 'display': 'inline-block'}),
+#    dash_table.DataTable(
+#    id='table',
+#    columns=[{"name": i, "id": i} for i in df.columns],
+#    data=df.head().to_dict('records'),style={'width': '49%', 'display': 'inline-block'}),
+#    html.Div(id='prediction',style={'width': '49%', 'display': 'inline-block'})
+#    #html.Div([dash_table.DataTable(id='tweet_table', rows=[{}])])    
+#])
 
 
 #@app.callback(
