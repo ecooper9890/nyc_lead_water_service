@@ -44,7 +44,7 @@ app.layout = html.Div(children=[
     dash_table.DataTable(
     id='table',
     columns=[{"name": i, "id": i} for i in df.columns],
-    data=df.to_dict('records'),style={'width': '49%', 'display': 'inline-block'}
+    data={},style={'width': '49%', 'display': 'inline-block'}
     ),
     html.Div(id='prediction',style={'width': '49%', 'display': 'inline-block'})
     #html.Div([dash_table.DataTable(id='tweet_table', rows=[{}])])
