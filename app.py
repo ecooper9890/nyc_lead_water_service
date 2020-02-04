@@ -32,7 +32,6 @@ server = app.server
 app.title='NYC Lead Water Service Lines'
 
 
-
 app.layout = html.Div(children=[
     html.H1(children='New York City Lead Service Line Locator'),
 
