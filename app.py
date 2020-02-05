@@ -29,7 +29,7 @@ df.drop(columns=['Unnamed: 0'],inplace=True)
 df['Prediction'].replace(1,'Lead Service Line',inplace=True)
 df['Prediction'].replace(0,'Non-Lead Service Line',inplace=True)
 df.rename(columns={'latitude':'Latitude','longitude':'Longitude','YearBuilt':'Construction Year','zip':'Zip Code'},inplace=True)
-
+df = df[['Prediction','Address','Borough','Zip Code','Construction Year','Latitude','Longitude']]
 ny_map = folium.Map(location=[40.682, -73.945],tiles='Stamen Toner' ,zoom_start=10)
 
 
@@ -125,22 +125,22 @@ def update_output_div(input_value1, input_value2):
     active_cell_row_index = ''
     if input_value1:
         #active_cell_row_index = int(input_value1['row'])
-    	r = input_value2.iloc[int(input_value1['row'])]	
-    	addr = r.Address
-    	a = folium.Map(location=[40.682, -73.945],tiles='Stamen Toner' ,zoom_start=10)
-    	a = ny_map._repr_html_()	
-    	if isinstance(input_value1, type(None)): return(ny_map._repr_html_())
-    	new_map = folium.Map(location=[40.682, -73.945],tiles='Stamen Toner' ,zoom_start=10)
-    	lat = r.Latitude
-    	lon = r.Longitude
-    	if (r.Prediction == 'Lead'): marker = folium.Marker(location=[lat, lon],icon=folium.Icon(color='red'))
-    	#if (df[df['Address']==addr].iloc[0]['Prediction'] == 'Lead'): marker = folium.Marker(location=[lat, lon],icon=folium.Icon(color='red'))
-    	else: marker = folium.Marker(location=[lat, lon],icon=folium.Icon(color='blue'))
-    	marker.add_to(new_map)
-    	b = new_map._repr_html_()
-    	return(new_map._repr_html_())
+        input_value2 = pd.DataFrame(input_value2)
+        r = input_value2.iloc[int(input_value1['row'])]
+        addr = r.Address
+        a = folium.Map(location=[40.682, -73.945],tiles='Stamen Toner' ,zoom_start=10)
+        a = ny_map._repr_html_()	
+        if isinstance(input_value1, type(None)): return(ny_map._repr_html_())
+        new_map = folium.Map(location=[40.682, -73.945],tiles='Stamen Toner' ,zoom_start=10)
+        lat = r.Latitude
+        lon = r.Longitude
+        if (r.Prediction == 'Lead Service Line'): marker = folium.Marker(location=[lat, lon],icon=folium.Icon(color='red'))
+        #if (df[df['Address']==addr].iloc[0]['Prediction'] == 'Lead'): marker = folium.Marker(location=[lat, lon],icon=folium.Icon(color='red'))
+        else: marker = folium.Marker(location=[lat, lon],icon=folium.Icon(color='blue'))
+        marker.add_to(new_map)
+        b = new_map._repr_html_()
+        return(new_map._repr_html_())
     return(ny_map._repr_html_())
-    
 
 if __name__ == '__main__':
     app.run_server(debug=True)
