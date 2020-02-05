@@ -119,26 +119,27 @@ def update_options(value1,value2):
 
 @app.callback(
     dash.dependencies.Output(component_id='map', component_property='srcDoc'),
-    [dash.dependencie.Input('table','active_cell')]
+    [dash.dependencies.Input('table','active_cell'), dash.dependencies.Input('table','data')]
 )
-def update_output_div(input_value1,input_value2):
-    if isinstance(input_value1, type(None)): return(ny_map._repr_html_())
+def update_output_div(input_value1, input_value2):
     active_cell_row_index = ''
     if input_value1:
-        active_cell_row_index = int(input_value1['row'])
-    r = df.iloc[active_cell_row_index]	
-
-    a = folium.Map(location=[40.682, -73.945],tiles='Stamen Toner' ,zoom_start=10)
-    a = ny_map._repr_html_()	
-
-    new_map = folium.Map(location=[40.682, -73.945],tiles='Stamen Toner' ,zoom_start=10)
-    lat = r['Latitude']
-    lon = r['Longitude']
-    if (df[df['Address']==input_value1].iloc[0]['Prediction'] == 'Lead'): marker = folium.Marker(location=[lat, lon],icon=folium.Icon(color='red'))
-    else: marker = folium.Marker(location=[lat, lon],icon=folium.Icon(color='blue'))
-    marker.add_to(new_map)
-    b = new_map._repr_html_()
-    return(new_map._repr_html_())
+        #active_cell_row_index = int(input_value1['row'])
+    	r = input_value2.iloc[int(input_value1['row'])]	
+    	addr = r.Address
+    	a = folium.Map(location=[40.682, -73.945],tiles='Stamen Toner' ,zoom_start=10)
+    	a = ny_map._repr_html_()	
+    	if isinstance(input_value1, type(None)): return(ny_map._repr_html_())
+    	new_map = folium.Map(location=[40.682, -73.945],tiles='Stamen Toner' ,zoom_start=10)
+    	lat = r.Latitude
+    	lon = r.Longitude
+    	if (r.Prediction == 'Lead'): marker = folium.Marker(location=[lat, lon],icon=folium.Icon(color='red'))
+    	#if (df[df['Address']==addr].iloc[0]['Prediction'] == 'Lead'): marker = folium.Marker(location=[lat, lon],icon=folium.Icon(color='red'))
+    	else: marker = folium.Marker(location=[lat, lon],icon=folium.Icon(color='blue'))
+    	marker.add_to(new_map)
+    	b = new_map._repr_html_()
+    	return(new_map._repr_html_())
+    return(ny_map._repr_html_())
     
 
 if __name__ == '__main__':
