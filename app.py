@@ -119,7 +119,7 @@ def update_options(value1,value2):
 
 @app.callback(
     dash.dependencies.Output(component_id='map', component_property='srcDoc'),
-    [State('table','active_cell')]
+    [dash.dependencie.Input('table','active_cell')]
 )
 def update_output_div(input_value1,input_value2):
     active_cell_row_index = ''
