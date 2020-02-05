@@ -50,7 +50,7 @@ app.layout = html.Div(children=[
     html.H1(children='New York City Lead Service Line Locator'),
 
 
-    html.Label(["Select Service Line Material:", dcc.RadioItems(id="service",options=[{'label': 'Lead Service Line', 'value': 'Lead'},{'label': 'Non-Lead Service Line', 'value': 'No Lead'}], labelStyle={'display': 'inline-block'})]),        
+    html.Label(["Select Service Line Material:", dcc.RadioItems(id="service",options=[{'label': 'All', 'value': 'All'}, {'label': 'Lead Service Line', 'value': 'Lead'},{'label': 'Non-Lead Service Line', 'value': 'No Lead'}], labelStyle={'display': 'inline-block'})]),        
     html.Label(["Select Borough:", dcc.RadioItems(id="boro",options=[{'label': i, 'value': i} for i in boros],labelStyle={'display': 'inline-block'})]),
     html.Label(["Select Zip Code:",dcc.Dropdown(id="zip")]),
     #html.Label(["Select Your Street Address:",dcc.Dropdown(id="staddr")]),
@@ -62,10 +62,13 @@ app.layout = html.Div(children=[
 
 @app.callback(
     dash.dependencies.Output("table", "data"),
-    [dash.dependencies.Input("zip","value")],
+    [dash.dependencies.Input("zip","value"), dash.dependencies.Input("service","value")],
 )
-def update_options(value):
-    return df[df['Zip Code']==value].head().to_dict('records')
+def update_options(value,service):
+    df_service=df
+    if (value2 == 'No Lead'): df_service = df[df['Prediction']=='Non-Lead Service Line']
+    elif (value2 == 'Lead'): df_service = df[df['Prediction']=='Lead Service Line']
+    return df_service[df_service['Zip Code']==value].head().to_dict('records')
 
 
 #@app.callback(
@@ -73,7 +76,7 @@ def update_options(value):
 #    [dash.dependencies.Input("service","value")],
 #)
 #def update_options(value):
-#    if (value == 'Non Lead'): df_service = df[df['Prediction']=='Non-Lead Service Line']
+#    if (value == 'No Lead'): df_service = df[df['Prediction']=='Non-Lead Service Line']
 #    if (value == 'Lead'): df_service = df[df['Prediction']=='Lead Service Line']
 #    return [{'label': i, 'value': i} for i in boros]
 
@@ -85,8 +88,9 @@ def update_options(value):
     [dash.dependencies.Input("boro","value"), dash.dependencies.Input("service","value")],
 )
 def update_options(value1,value2):
+    df_service=df
     if (value2 == 'No Lead'): df_service = df[df['Prediction']=='Non-Lead Service Line']
-    else: df_service = df[df['Prediction']=='Lead Service Line']
+    elif (value2 == 'Lead'): df_service = df[df['Prediction']=='Lead Service Line']
     return [{'label': i , 'value': i} for i in df_service[df_service['Borough']==value1]['Zip Code'].unique()]
 
 
