@@ -68,7 +68,7 @@ def update_options(value,service):
     df_service=df
     if (service == 'No Lead'): df_service = df[df['Prediction']=='Non-Lead Service Line']
     elif (service == 'Lead'): df_service = df[df['Prediction']=='Lead Service Line']
-    return df_service[df_service['Zip Code']==value].head().to_dict('records')
+    return df_service[df_service['Zip Code']==value].to_dict('records')
 
 
 #@app.callback(
