@@ -66,8 +66,8 @@ app.layout = html.Div(children=[
 )
 def update_options(value,service):
     df_service=df
-    if (value2 == 'No Lead'): df_service = df[df['Prediction']=='Non-Lead Service Line']
-    elif (value2 == 'Lead'): df_service = df[df['Prediction']=='Lead Service Line']
+    if (service == 'No Lead'): df_service = df[df['Prediction']=='Non-Lead Service Line']
+    elif (service == 'Lead'): df_service = df[df['Prediction']=='Lead Service Line']
     return df_service[df_service['Zip Code']==value].head().to_dict('records')
 
 
