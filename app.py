@@ -54,6 +54,7 @@ app.layout = html.Div(children=[
     html.Label(["Select Borough:", dcc.RadioItems(id="boro",options=[{'label': i, 'value': i} for i in boros],labelStyle={'display': 'inline-block'})]),
     html.Label(["Select Zip Code:",dcc.Dropdown(id="zip")]),
     #html.Label(["Select Your Street Address:",dcc.Dropdown(id="staddr")]),
+    html.Div(id='prediction')
     html.Iframe(id='map', srcDoc=ny_map._repr_html_(), width='50%',height='400',style={'width': '49%', 'display': 'inline-block'}),
     dt.DataTable(id='table',columns=[{"name": i, "id": i} for i in df.columns],data=df.head().to_dict('records'))
     #html.Div(id='prediction')
@@ -104,21 +105,14 @@ def update_options(value1,value2):
 #    return [{'label': i , 'value': i} for i in df_service[df_service['Zip Code']==value1]['Address'].unique()]
 
 
-#@app.callback(
-#    dash.dependencies.Output(component_id='prediction', component_property='children'),
-#    [dash.dependencies.Input(component_id='staddr', component_property='value'),dash.dependencies.Input(component_id='service', component_property='value')]
-#)
-#def update_output_div(input_value1,input_value2):
-#    if isinstance(input_value1, type(None)): return ['']
-#    if (input_value2 == 'No Lead'): a=0
-#    else: a=1
-#    if (input_value2 == 'No Lead'): df_service = df[df['Prediction']=='Non-Lead Service Line']
-#    else: df_service = df[df['Prediction']=='Lead Service Line']
-#    if (input_value1 not in list(df[df['Prediction']==a].Address)): return[' ']
-#    return ['This address is predicted to have service line of type: ' + input_value2]        
-#    p = list(df_service[df_service['Address']==input_value1]['Prediction'])[0]
-    #if p==0: return ['This address is predicted to have: NOT LEAD']
-    #if p==1: return ['This address is predicted to have: LEAD']    
+@app.callback(
+    dash.dependencies.Output(component_id='prediction', component_property='children'),
+    [dash.dependencies.Input(component_id='zip', component_property='value')]
+)
+def update_output_div(input_value1):
+    if isinstance(input_value1, type(None)): return ['']
+    if (input_value2 == 'No Lead'): a=0
+    else: return ['Select an address in the table below to find its location'
 
 
 @app.callback(
