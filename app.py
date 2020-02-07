@@ -54,7 +54,7 @@ app.layout = html.Div(children=[
     html.Label(["Select Borough:", dcc.RadioItems(id="boro",options=[{'label': i, 'value': i} for i in boros],labelStyle={'display': 'inline-block'})]),
     html.Label(["Select Zip Code:",dcc.Dropdown(id="zip")]),
     #html.Label(["Select Your Street Address:",dcc.Dropdown(id="staddr")]),
-    html.Div(id='prediction')
+    html.Div(id='prediction'),
     html.Iframe(id='map', srcDoc=ny_map._repr_html_(), width='50%',height='400',style={'width': '49%', 'display': 'inline-block'}),
     dt.DataTable(id='table',columns=[{"name": i, "id": i} for i in df.columns],data=df.head().to_dict('records'))
     #html.Div(id='prediction')
