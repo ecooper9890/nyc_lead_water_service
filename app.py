@@ -62,14 +62,14 @@ app.layout = html.Div(children=[
 
 
 @app.callback(
-    [dash.dependencies.Output("table", "data"),dash.dependencies.Output("table", "max_rows_in_viewport")],
+    dash.dependencies.Output("table", "data"),
     [dash.dependencies.Input("zip","value"), dash.dependencies.Input("service","value")],
 )
 def update_options(value,service):
     df_service=df
     if (service == 'No Lead'): df_service = df[df['Prediction']=='Non-Lead Service Line']
     elif (service == 'Lead'): df_service = df[df['Prediction']=='Lead Service Line']
-    return df_service[df_service['Zip Code']==value].to_dict('records'), 100
+    return df_service[df_service['Zip Code']==value].to_dict('records')
 
 
 #@app.callback(
