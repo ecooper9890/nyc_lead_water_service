@@ -56,7 +56,7 @@ app.layout = html.Div(children=[
     #html.Label(["Select Your Street Address:",dcc.Dropdown(id="staddr")]),
     html.Div(id='prediction'),
     html.Iframe(id='map', srcDoc=ny_map._repr_html_(), width='50%',height='400',style={'width': '49%', 'display': 'inline-block'}),
-    dt.DataTable(id='table',columns=[{"name": i, "id": i} for i in df.columns],data=df.head().to_dict('records'))
+    dt.DataTable(id='table',columns=[{"name": i, "id": i} for i in df.columns],data=df.head().to_dict('records'),page_size=50)
     #html.Div(id='prediction')
 ])
 
