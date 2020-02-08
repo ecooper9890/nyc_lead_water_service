@@ -111,8 +111,7 @@ def update_options(value1,value2):
 )
 def update_output_div(input_value1):
     if isinstance(input_value1, type(None)): return ['']
-    if (input_value2 == 'No Lead'): a=0
-    else: return ['Select an address in the table below to find its location']
+    return ['Select an address in the table below to find its location']
 
 
 @app.callback(
