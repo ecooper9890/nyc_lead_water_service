@@ -56,20 +56,20 @@ app.layout = html.Div(children=[
     #html.Label(["Select Your Street Address:",dcc.Dropdown(id="staddr")]),
     html.Div(id='prediction'),
     html.Iframe(id='map', srcDoc=ny_map._repr_html_(), width='50%',height='400',style={'width': '49%', 'display': 'inline-block'}),
-    dt.DataTable(id='table',columns=[{"name": i, "id": i} for i in df.columns],data=df.head().to_dict('records'), max_rows_in_viewport=20)
+    dt.DataTable(id='table',columns=[{"name": i, "id": i} for i in df.columns],data=df.head().to_dict('records'))
     #html.Div(id='prediction')
 ])
 
 
 @app.callback(
-    dash.dependencies.Output("table", "data"),
+    [dash.dependencies.Output("table", "data"),dash.dependencies.Output("table", "max_rows_in_viewport")],
     [dash.dependencies.Input("zip","value"), dash.dependencies.Input("service","value")],
 )
 def update_options(value,service):
     df_service=df
     if (service == 'No Lead'): df_service = df[df['Prediction']=='Non-Lead Service Line']
     elif (service == 'Lead'): df_service = df[df['Prediction']=='Lead Service Line']
-    return df_service[df_service['Zip Code']==value].to_dict('records')
+    return df_service[df_service['Zip Code']==value].to_dict('records'), 100
 
 
 #@app.callback(
